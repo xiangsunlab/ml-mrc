@@ -1,0 +1,31 @@
+## Settings for MSH model
+system_type              model                                              # model system
+MSH_type                 I                                                  # MSH-I model
+DOFe                     2                                                  # number of states
+DOFn                     60                                                 # total nuclear DOF = N*(DOFe-1)
+energy_unit              none                                               # unit of energy parameter in this file
+epsilon                  1.0,-1.0                                           # minimum energy of each states
+gamma_DA                 1.0                                                # dibatic coupling, the order is gamma_01,02,12
+model_load               /gpfsnyu/xspace/projects/TT-dyn/Jobs/MLMRC/Models/SBM1/shifts.csv # load the model parameters (frequencies and shifts) from file
+
+## Settings for dynamcis
+nucl_sample              Wigner                                            
+beta                     5.0                                                # 1/kT for nuclear sampling
+sample_state             0                                                  # sampling state
+init_state               0,0                                                # dynamics start from population state 0
+nsteps                   20000                                              # total nuclear steps to run
+DT                       0.001                                              # time step size in ps
+ntraj                    10000                                              # total number of trajectory to run
+EPN                      20                                                 # electronic steps per nuclear step
+min_judge_traj_avail     1                                                 
+
+## Additional
+# MLMRC_layer             60                                                 # L=1 star-like, L=N chain-like, 1<L<N arrow-like
+# MLMRC_picture           CL                                                 # CL/VB picture for truncation
+# N_truncation            60                                                 # Nt=1 RC-only, Nt=N exact, 1<=Nt<N tML-MRC
+
+## Auto Scan
+model_type               MLMRC
+MLMRC_layer              5
+dyn_type                 LSC
+
